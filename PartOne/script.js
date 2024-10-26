@@ -175,7 +175,7 @@ const multiClassButton = document.getElementById('multi-class-btn');
 
 // Add event listener to open the multi-class classification page
 multiClassButton.addEventListener('click', function () {
-    window.location.href = '../PartTwo/part2.html'; // Redirect to another page for multi-class
+    window.location.href = '../PartTwo/part2.html#Part2'; // Redirect to another page for multi-class
 });
 
 // Model variables for binary classification

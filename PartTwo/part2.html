@@ -16,9 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <!-- This adds the icon Kit -->
-    <link rel="stylesheet" href="../all.min.css">
+    <!-- <link rel="stylesheet" href="../all.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <!-- This is used to render all elemnts normally for all browsers -->
     <link rel="stylesheet" href="../normalize.css">
     <link rel="stylesheet" href="part2.css">
@@ -29,7 +28,7 @@
         <h2>Multi-Class Classification</h2>
         <p>Project's Part Two.</p>
     </div>
-    <div class="container">
+    <div class="container" id="Part2">
         <div class="content">
             <!-- Form inputs for learning rate and iterations -->
             <div class="form-container">
@@ -37,7 +36,7 @@
                 <input type="number" id="learning-rate" step="0.001" value="0.01">
 
                 <label for="max-iterations">Max Iterations:</label>
-                <input type="number" id="max-iterations" value="1000">
+                <input type="number" id="max-iterations" value="10000">
             </div>
 
             <!-- Shape selector -->
@@ -59,7 +58,6 @@
 
             <!-- Display accuracy -->
             <div id="accuracy" style="margin: 8px 0;">Accuracy: </div>
-            <button id="back-btn"><i class="fa-solid fa-caret-left"></i></button>
             <div class="input-section">
                 <label for="input-x">Enter X Coordinate:</label>
                 <input type="number" id="input-x" />
@@ -71,12 +69,17 @@
             <button id="predict-btn">Predict Group</button>
 
             <div id="output-result"></div>
+            <button id="back-btn"><i class="fa-solid fa-caret-left"></i></button>
         </div>
         <div class="Canvas">
             <canvas id="classification-graph" width="500" height="500"></canvas>
         </div>
 
     </div>
+
+    <footer>
+        <span>© - 2024 All rights are reserverd.</span>
+    </footer>
 
     <script src="part2.js"></script>
 </body>
