@@ -1,0 +1,400 @@
+:root {
+    --main-color: #161b33;
+    --secondary-color: #c5c2c2;
+
+}
+
+::selection {
+    background-color: var(--main-color);
+    color: white;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+/* This will represent a dynamic heading mechanism */
+.main-heading {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.main-heading h2 {
+    font-weight: normal;
+    font-size: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    text-transform: uppercase;
+    color: black;
+}
+
+.main-heading h2::before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--main-color);
+    bottom: -20px;
+
+}
+
+.main-heading h2::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--main-color);
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -25px;
+    background-color: white;
+
+}
+
+.main-heading p {
+    line-height: 1.6;
+    width: 550px;
+    color: black;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* the rest of the design */
+
+.content {
+    position: relative;
+    color: white;
+    text-align: center;
+    z-index: 1;
+    /* Ensures content appears above video */
+    padding: 20px;
+    margin: 0 180px;
+}
+
+body {
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    margin: 0;
+}
+
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+canvas {
+    border: 1px solid black;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+label,
+input,
+button {
+    margin: 5px 0;
+}
+
+
+#learn-btn,
+#clear-btn,
+#multi-class-btn,
+#binary-predict-btn {
+    padding: 10px;
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 6px;
+    color: var(--secondary-color);
+    transition: 0.2s;
+    margin-top: 10px;
+}
+
+#learn-btn:hover,
+#clear-btn:hover,
+#multi-class-btn:hover,
+#binary-predict-btn:hover {
+    color: var(--main-color);
+    background-color: var(--secondary-color);
+}
+
+#learning-rate,
+#max-iterations {
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.5s;
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-color);
+    background-color: var(--main-color);
+    margin-bottom: 50px;
+}
+
+.title i {
+    font-size: 25px;
+    margin-right: 30px;
+}
+
+#multi-class-btn {
+    width: 60px;
+    height: 40px;
+}
+
+
+label,
+#accuracy,
+#binary-output-result {
+    color: black;
+    font-weight: bold;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-section input {
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.5s;
+}
+
+.starter {
+    background-color: white;
+}
+
+.starter ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 15px;
+}
+
+.starter ul li {
+    margin-right: 70px;
+}
+
+.starter ul li i {
+    animation: infiniteRotate 0.9s ease-in-out infinite;
+}
+
+
+@keyframes infiniteRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.starter ul a {
+    text-decoration: none;
+    color: var(--main-color);
+    padding: 5px;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+@media (max-width:550px) {
+    .starter ul {
+        display: none;
+    }
+}
+
+.starter ul a:hover {
+    color: var(--secondary-color);
+}
+
+.image {
+    background-image: url(../Images/Ai.png);
+    max-width: 100%;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+}
+
+.image .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.image .text h2 {
+    font-size: 50px;
+}
+
+.image .text p {
+    margin-top: 40px;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.about {
+    margin: 0 100px;
+}
+
+
+.about .classes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+@media (max-width:900px) {
+    .about .classes {
+        flex-direction: column;
+    }
+
+    .about .classes .binary {
+        margin-bottom: 80px;
+    }
+
+    .classes .binary p,
+    .classes .multi p {
+        left: 0;
+    }
+
+    .container1 {
+        flex-wrap: wrap;
+    }
+
+}
+
+
+.about .classes .binary {
+    position: relative;
+}
+
+.about .classes .multi {
+    position: relative;
+}
+
+.classes .binary p,
+.classes .multi p {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    bottom: -52px;
+    background-color: #c5c2c292;
+    color: var(--main-color);
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    border-radius: 6px;
+    left: 18px;
+}
+
+.classes .binary img:hover+p,
+.classes .multi img:hover+p {
+    opacity: 1;
+}
+
+.creators-section {
+    text-align: center;
+    padding: 40px;
+    background-color: #f4f4f9;
+}
+
+.creators-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.creator-card {
+    display: inline-block;
+    width: 200px;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.creators-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.creator-card h3 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.creator-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.creator-card i {
+    margin-top: 10px;
+    font-size: 20px;
+    color: black;
+    transition: 0.2s;
+}
+
+.creator-card:hover {
+    transform: translateY(-10px);
+}
+
+.creator-card:hover i {
+    color: var(--secondary-color);
+}
+
+
+footer {
+    background-color: var(--main-color);
+    margin: 0;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+footer span {
+    font-weight: bold;
+}

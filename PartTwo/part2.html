@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Class Classification</title>
+    <!-- Open Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <!-- Work sans font imported from google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- This adds the icon Kit -->
+    <link rel="stylesheet" href="../all.min.css">
+    <!-- This is used to render all elemnts normally for all browsers -->
+    <link rel="stylesheet" href="../normalize.css">
+    <link rel="stylesheet" href="part2.css">
+</head>
+
+<body>
+    <div class="main-heading" id="About">
+        <h2>Multi-Class Classification</h2>
+        <p>Project's Part Two.</p>
+    </div>
+    <div class="container">
+        <div class="content">
+            <!-- Form inputs for learning rate and iterations -->
+            <div class="form-container">
+                <label for="learning-rate">Learning Rate:</label>
+                <input type="number" id="learning-rate" step="0.001" value="0.01">
+
+                <label for="max-iterations">Max Iterations:</label>
+                <input type="number" id="max-iterations" value="1000">
+            </div>
+
+            <!-- Shape selector -->
+            <div class="shape-selector">
+                <label for="shape-category">Select Shape:</label>
+                <select id="shape-category">
+                    <option value="circle" data-color="green">Circle</option>
+                    <option value="square" data-color="red">Square</option>
+                    <option value="triangle" data-color="blue">Triangle</option>
+                    <option value="rectangle" data-color="black">Rectangle</option>
+                </select>
+            </div>
+
+            <!-- Canvas for classification points -->
+
+            <!-- Buttons for learning and clearing the canvas -->
+            <button id="learn-btn">Learn and Draw Lines</button>
+            <button id="clear-btn">Clear Canvas</button>
+
+            <!-- Display accuracy -->
+            <div id="accuracy" style="margin: 8px 0;">Accuracy: </div>
+            <button id="back-btn"><i class="fa-solid fa-caret-left"></i></button>
+            <div class="input-section">
+                <label for="input-x">Enter X Coordinate:</label>
+                <input type="number" id="input-x" />
+
+                <label for="input-y">Enter Y Coordinate:</label>
+                <input type="number" id="input-y" />
+            </div>
+
+            <button id="predict-btn">Predict Group</button>
+
+            <div id="output-result"></div>
+        </div>
+        <div class="Canvas">
+            <canvas id="classification-graph" width="500" height="500"></canvas>
+        </div>
+
+    </div>
+
+    <script src="part2.js"></script>
+</body>
+
+</html>

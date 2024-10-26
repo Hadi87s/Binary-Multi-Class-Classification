@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Classification</title>
+    <!-- CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Open Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <!-- Work sans font imported from google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- This adds the Icons Kit -->
+    <link rel="stylesheet" href="../all.min.css">
+    <!-- This is used to render all elemnts normally for all browsers -->
+    <link rel="stylesheet" href="../normalize.css">
+</head>
+
+<body>
+    <div class="starter">
+        <nav>
+
+            <ul>
+                <li>
+                    <i class="fa-solid fa-code" style="font-size: 18px"></i>
+                </li>
+                <li>
+                    <a href="#About">About</a>
+                </li>
+                <li>
+                    <a href="#Solution">Solution</a>
+                </li>
+                <li>
+                    <a href="#Creators">Creators</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="image">
+        <div class="text">
+            <h2>Ai Homework</h2>
+            <p>This project explores two key approaches in machine learning classification, binary and multi-class
+                classification. Through interactive visualizations, users can plot points on a canvas to dynamically
+                classify data points based on their chosen category.
+            </p>
+        </div>
+    </div>
+    <div class="main-heading" id="About">
+        <h2>About The Project</h2>
+        <p>This project is an interactive demonstration of binary and multi-class classification techniques. It allows
+            users to visualize how machine learning algorithms work by interacting directly with the canvas, placing
+            data points, and seeing how the model learns to distinguish between different categories.</p>
+    </div>
+    <div class="about">
+        <div class="classes">
+            <div class="binary">
+                <img src="../Images/Binary-Classification.png" alt="">
+                <p>where two categories or "classes" are separated.</p>
+            </div>
+            <div class="multi">
+                <img src="../Images/Multi-Class.png" alt="">
+                <p>where more than two classes are classified by the model.</p>
+            </div>
+        </div>
+    </div>
+    <div class="main-heading" id="Solution">
+        <h2>Binary Classification</h2>
+        <p>Project's Part One.
+        </p>
+    </div>
+
+    <div class="container1">
+
+        <div class="content">
+            <!-- Form inputs for learning rate and iterations -->
+            <div class="form-container">
+                <label for="learning-rate">Learning Rate:</label>
+                <input type="number" id="learning-rate" step="0.001" value="0.01">
+
+                <label for="max-iterations">Max Iterations:</label>
+                <input type="number" id="max-iterations" value="1000">
+            </div>
+
+
+            <!-- Buttons for learning and clearing the canvas -->
+            <button id="learn-btn">Learn and Draw Line</button>
+            <button id="clear-btn">Clear Canvas</button>
+
+
+            <!-- Display accuracy -->
+            <div id="accuracy" style="margin-top: 10px;">Accuracy: </div>
+
+            <!-- New button for Multi-Class Classification -->
+            <button id="multi-class-btn">
+                <i class="fa-solid fa-caret-right"></i>
+            </button>
+
+            <div class="input-section">
+                <label for="binary-input-x">Enter X Coordinate (Binary):</label>
+                <input type="number" id="binary-input-x" />
+
+                <label for="binary-input-y">Enter Y Coordinate (Binary):</label>
+                <input type="number" id="binary-input-y" />
+            </div>
+
+            <button id="binary-predict-btn">Predict Group (Binary)</button>
+
+            <div id="binary-output-result" style="margin-top: 10px;"></div>
+        </div>
+
+        <div class="Canvas">
+            <!-- Canvas for classification points -->
+            <canvas id="classification-graph" width="500" height="500"></canvas>
+        </div>
+    </div>
+
+    <div class="creators-section" id="Creators">
+        <h2>Meet the Creators</h2>
+        <div class="creator-card">
+            <h3>Hadi Irshaid</h3>
+            <p>CE Student</p>
+            <a href="https://github.com/Hadi87s" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <div class="creator-card">
+            <h3>Zahi Qudu</h3>
+            <p>CE Student</p>
+            <a href="https://github.com/ZahiQudu" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </div>
+
+
+    <footer>
+        <span>© - 2024 All rights are reserverd.</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
