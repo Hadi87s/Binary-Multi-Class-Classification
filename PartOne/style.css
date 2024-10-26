@@ -153,6 +153,7 @@ button {
 #binary-predict-btn:hover {
     color: var(--main-color);
     background-color: var(--secondary-color);
+    cursor: pointer;
 }
 
 #learning-rate,

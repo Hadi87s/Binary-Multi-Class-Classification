@@ -8,40 +8,34 @@ let class1Points = [];
 let class2Points = [];
 let weights = [0, 0];
 let bias = 0;
-const gridSpacing = 50; // Change this value to set grid spacing
+const gridSpacing = 50;
 
 // Disable the context menu on right-click
 canvas.addEventListener('contextmenu', event => event.preventDefault());
 
-// Function to draw a gridded background on the canvas
-// Function to draw a gridded background on the canvas
+// Draw a gridded background on the canvas
 function drawGrid() {
-    ctx.strokeStyle = '#e0e0e0'; // Light gray color for the grid
+    ctx.strokeStyle = '#e0e0e0';
     ctx.lineWidth = 0.5;
 
-    // Draw vertical grid lines
     for (let x = 0; x < canvas.width; x += gridSpacing) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
         ctx.stroke();
-        // Draw x-axis labels
-        ctx.fillStyle = 'black'; // Set text color to black
+        ctx.fillStyle = 'black';
         ctx.fillText(x, x, 12);
     }
 
-    // Draw horizontal grid lines
     for (let y = 0; y < canvas.height; y += gridSpacing) {
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(canvas.width, y);
         ctx.stroke();
-        // Draw y-axis labels
-        ctx.fillStyle = 'black'; // Set text color to black
+        ctx.fillStyle = 'black';
         ctx.fillText(y, 2, y);
     }
 }
-
 
 // Handle canvas click for adding points
 canvas.addEventListener('mousedown', function (event) {
@@ -49,11 +43,9 @@ canvas.addEventListener('mousedown', function (event) {
     const y = event.offsetY;
 
     if (event.button === 0) {
-        // Left Click: Class 1 (Circles)
         class1Points.push({ x, y });
         drawPoint(x, y, 'green', 'circle');
     } else if (event.button === 2) {
-        // Right Click: Class 2 (Squares)
         class2Points.push({ x, y });
         drawPoint(x, y, 'red', 'square');
     }
@@ -71,6 +63,12 @@ function drawPoint(x, y, color, shape) {
     }
 }
 
+// Updated function to classify a point with trained weights
+function classifyBinaryPoint(x, y) {
+    const score = weights[0] * x + weights[1] * y + bias;
+    return score >= 0 ? 'Circle' : 'Square';
+}
+
 // Handle learning and drawing the decision boundary
 learnButton.addEventListener('click', function () {
     const learningRate = parseFloat(document.getElementById('learning-rate').value);
@@ -81,77 +79,63 @@ learnButton.addEventListener('click', function () {
         ...class2Points.map(p => ({ ...p, label: 0 }))
     ];
 
-    // Train the perceptron model
     perceptronTrain(dataPoints, learningRate, maxIterations);
-
-    // Draw the decision boundary
     drawDecisionBoundary();
 });
 
-// Simple perceptron training function
+// Perceptron training function with refined logic
 function perceptronTrain(dataPoints, learningRate, maxIterations) {
     weights = [Math.random(), Math.random()];
     bias = Math.random();
 
     for (let iter = 0; iter < maxIterations; iter++) {
-        let correctPredictions = 0; // Reset for each iteration
+        let allCorrect = true;
 
         dataPoints.forEach(point => {
-            const prediction = classify(point.x, point.y);
-            const error = point.label - prediction;
+            const prediction = classifyBinaryPoint(point.x, point.y);
+            const error = point.label - (prediction === 'Circle' ? 1 : 0);
 
             if (error !== 0) {
                 weights[0] += learningRate * error * point.x;
                 weights[1] += learningRate * error * point.y;
                 bias += learningRate * error;
-            } else {
-                correctPredictions++;
+                allCorrect = false;
             }
         });
 
-        // Stop if all predictions are correct
-        if (correctPredictions === dataPoints.length) break;
+        if (allCorrect) break;
     }
 
-    // Calculate final accuracy outside of loop
-    let correctPredictions = 0;
-    dataPoints.forEach(point => {
-        const prediction = classify(point.x, point.y);
-        if (prediction === point.label) correctPredictions++;
-    });
-
-    const accuracy = (correctPredictions / dataPoints.length) * 100;
+    const accuracy = calculateAccuracy(dataPoints);
     accuracyDisplay.innerText = `Accuracy: ${accuracy.toFixed(2)}%`;
 }
 
-// Function to classify a point
-function classify(x, y) {
-    const sum = weights[0] * x + weights[1] * y + bias;
-    return sum >= 0 ? 1 : 0;
+// Accuracy calculation function
+function calculateAccuracy(dataPoints) {
+    let correctPredictions = 0;
+    dataPoints.forEach(point => {
+        const prediction = classifyBinaryPoint(point.x, point.y);
+        if ((prediction === 'Circle' && point.label === 1) || (prediction === 'Square' && point.label === 0)) {
+            correctPredictions++;
+        }
+    });
+    return (correctPredictions / dataPoints.length) * 100;
 }
 
 // Draw the decision boundary (a line that separates the two classes)
 function drawDecisionBoundary() {
-    const width = canvas.width;
-    const height = canvas.height;
-
-    // Clear the previous drawing
-    ctx.clearRect(0, 0, width, height);
-
-    // Redraw the grid
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawGrid();
 
-    // Re-draw all points
     class1Points.forEach(point => drawPoint(point.x, point.y, 'green', 'circle'));
     class2Points.forEach(point => drawPoint(point.x, point.y, 'red', 'square'));
 
-    // Draw the decision line
     const x1 = 0;
     const y1 = (-bias - weights[0] * x1) / weights[1];
-    const x2 = width;
+    const x2 = canvas.width;
     const y2 = (-bias - weights[0] * x2) / weights[1];
 
-    if (isFinite(y1) && isFinite(y2)) { // Only draw line if it's valid
+    if (isFinite(y1) && isFinite(y2)) {
         ctx.strokeStyle = 'lightblue';
         ctx.lineWidth = 2;
         ctx.beginPath();
@@ -167,27 +151,8 @@ clearButton.addEventListener('click', function () {
     class1Points = [];
     class2Points = [];
     accuracyDisplay.innerText = 'Accuracy: ';
-    drawGrid(); // Redraw grid after clearing
+    drawGrid();
 });
-
-// Get the multi-class button element
-const multiClassButton = document.getElementById('multi-class-btn');
-
-// Add event listener to open the multi-class classification page
-multiClassButton.addEventListener('click', function () {
-    window.location.href = '../PartTwo/part2.html#Part2'; // Redirect to another page for multi-class
-});
-
-// Model variables for binary classification
-let binaryWeights = [Math.random(), Math.random()];
-let binaryBias = Math.random();
-
-// Function to classify a point for binary classification
-function classifyBinaryPoint(xCoord, yCoord) {
-    const score = binaryWeights[0] * xCoord + binaryWeights[1] * yCoord + binaryBias;
-    // Return classA if score >= 0, otherwise classB
-    return score >= 0 ? 'Circle' : 'Square';
-}
 
 // Event listener for the predict button in binary classification
 document.getElementById('binary-predict-btn').addEventListener('click', function () {
@@ -200,3 +165,11 @@ document.getElementById('binary-predict-btn').addEventListener('click', function
 
 // Draw the initial grid when the canvas loads
 drawGrid();
+
+// Get the multi-class button element
+const multiClassButton = document.getElementById('multi-class-btn');
+
+// Add event listener to open the multi-class classification page
+multiClassButton.addEventListener('click', function () {
+    window.location.href = '../PartTwo/part2.html#Part2'; // Redirect to another page for multi-class
+});
