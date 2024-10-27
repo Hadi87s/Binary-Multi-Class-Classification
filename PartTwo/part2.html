@@ -54,11 +54,11 @@
             <!-- Canvas for classification points -->
 
             <!-- Buttons for learning and clearing the canvas -->
-            <button id="learn-btn">Learn and Draw Lines</button>
-            <button id="clear-btn">Clear Canvas</button>
+            <button id="learn-btn"><i class="fa-solid fa-play"></i> Start Learning</button>
+            <button id="clear-btn"><i class="fa-solid fa-trash"></i> Clear Canvas</button>
 
             <!-- Display accuracy -->
-            <div id="accuracy" style="margin: 8px 0;">Accuracy: </div>
+            <div id="accuracy" style="margin: 15px 0;">Accuracy: </div>
             <div class="input-section">
                 <label for="input-x">Enter X Coordinate:</label>
                 <input type="number" id="input-x" />
@@ -67,10 +67,10 @@
                 <input type="number" id="input-y" />
             </div>
 
-            <button id="predict-btn">Predict Group</button>
+            <button id="predict-btn"><i class="fa-solid fa-magnifying-glass"></i> Predict Group</button>
+            <button id="back-btn"><i class="fa-solid fa-caret-left"></i></button>
 
             <div id="output-result"></div>
-            <button id="back-btn"><i class="fa-solid fa-caret-left"></i></button>
         </div>
         <div class="Canvas">
             <canvas id="classification-graph" width="500" height="500"></canvas>
