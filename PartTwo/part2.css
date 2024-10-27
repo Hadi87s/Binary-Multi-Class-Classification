@@ -107,6 +107,44 @@ body {
     .container {
         flex-wrap: wrap;
     }
+
+    canvas {
+        width: 240px;
+        margin: 20px auto;
+    }
+
+    img {
+        width: 250px;
+    }
+
+    .main-heading h2 {
+        font-size: 30px;
+    }
+
+    .main-heading p {
+        font-size: 10px;
+    }
+
+    #learning-rate,
+    #max-iterations {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .form-container {
+        width: 200px;
+
+    }
+
+    .input-section {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    .shape-selector {
+        max-width: 200px;
+        margin: 0 auto;
+    }
 }
 
 canvas {

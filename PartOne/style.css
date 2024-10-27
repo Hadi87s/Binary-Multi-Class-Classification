@@ -328,6 +328,33 @@ label,
         flex-wrap: wrap;
     }
 
+    canvas {
+        width: 240px;
+        margin: 0 auto;
+    }
+
+    img {
+        width: 250px;
+    }
+
+    .main-heading h2 {
+        font-size: 30px;
+    }
+
+    .main-heading p {
+        font-size: 10px;
+    }
+
+    .form-container {
+        width: 200px;
+    }
+
+}
+
+@media (min-width:901px) {
+    .image {
+        width: 117%;
+    }
 }
 
 
@@ -374,7 +401,7 @@ label,
 .creator-card {
     display: inline-block;
     width: 200px;
-    margin: 20px;
+    margin: 20px auto;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
