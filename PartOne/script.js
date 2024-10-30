@@ -173,3 +173,17 @@ const multiClassButton = document.getElementById('multi-class-btn');
 multiClassButton.addEventListener('click', function () {
     window.location.href = '../PartTwo/part2.html#Part2'; // Redirect to another page for multi-class
 });
+
+window.onscroll = function () {
+    const button = document.getElementById("scrollToTop");
+    if (document.documentElement.scrollTop > 420) {
+        button.classList.add("show", "rotate"); // Add both show and rotate
+    } else {
+        button.classList.remove("show", "rotate"); // Remove both to hide and reset rotation
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+

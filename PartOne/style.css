@@ -455,3 +455,36 @@ footer {
 footer span {
     font-weight: bold;
 }
+
+#scrollToTop {
+    position: fixed;
+    top: 45%;
+    transform: translateY(-50%);
+    right: 40px;
+    opacity: 0;
+    /* Initially hidden */
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+#scrollToTop.show {
+    opacity: 1;
+    /* Make it visible when added */
+}
+
+#scrollToTop.rotate {
+    transform: rotate(180deg);
+    /* Rotate 180 degrees */
+}
+
+#scrollToTop:hover {
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+}
