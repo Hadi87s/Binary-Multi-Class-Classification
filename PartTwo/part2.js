@@ -133,8 +133,15 @@ learnButton.addEventListener('click', function () {
     const learningRate = parseFloat(document.getElementById('learning-rate').value);
     const maxIterations = parseInt(document.getElementById('max-iterations').value);
 
-    perceptronTrain(points, learningRate, maxIterations);
-    drawDecisionBoundaries();
+    if (document.getElementById('max-iterations').value > 100000) {
+        document.getElementById('loading').style.display = 'block';
+    }
+
+    setTimeout(() => {
+        perceptronTrain(points, learningRate, maxIterations);
+        document.getElementById('loading').style.display = 'none';
+        drawDecisionBoundaries();
+    }, 50); // Small delay to ensure the loading display updates
 });
 
 // Draw decision boundaries for each class

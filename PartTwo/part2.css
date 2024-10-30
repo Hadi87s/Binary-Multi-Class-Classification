@@ -251,3 +251,31 @@ footer {
 footer span {
     font-weight: bold;
 }
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #333;
+    z-index: 1000;
+    /* Ensure it’s above other elements */
+    background: rgba(255, 255, 255, 0.8);
+    /* Optional: Add a background to fade other content */
+    padding: 20px;
+    border-radius: 50%;
+    border: solid 4px;
+    border-color: var(--main-color) var(--main-color) transparent var(--main-color);
+    animation: spin 0.8s infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
