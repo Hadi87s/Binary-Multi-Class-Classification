@@ -1,8 +1,9 @@
 :root {
-    --main-color: #161b33;
-    --secondary-color: #c5c2c2;
-
+    --main-color: #006699;
+    --secondary-color: #e2e2e2;
+    --dark-main: #025681;
 }
+
 
 html {
     scroll-behavior: smooth;

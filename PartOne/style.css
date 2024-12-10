@@ -1,11 +1,11 @@
 :root {
-    --main-color: #161b33;
-    --secondary-color: #c5c2c2;
-
+    --main-color: #006699;
+    --secondary-color: #e2e2e2;
+    --dark-main: #025681;
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 12px;
     /* Width of the scrollbar */
 }
 
@@ -136,7 +136,14 @@ button {
     margin: 5px 0;
 }
 
-
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    width: 100%;
+    z-index: 10;
+}
 #learn-btn,
 #clear-btn,
 #multi-class-btn,
@@ -226,7 +233,9 @@ label,
 }
 
 .starter ul li i {
+    cursor: pointer;
     animation: infiniteRotate 1s ease-in-out infinite;
+    color: var(--main-color);
 }
 
 
@@ -269,6 +278,7 @@ label,
     height: 100vh;
     overflow: hidden;
     border-bottom: 2px solid var(--secondary-color);
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(2,37,78,1) 0%, rgba(4,56,126,1) 19.7%, rgba(85,245,221,1) 100.2% );
 }
 
 .background-video {
@@ -280,6 +290,7 @@ label,
     object-fit: cover;
     z-index: -1;
 }
+
 
 
 .image .text {
@@ -371,7 +382,7 @@ label,
     transition: opacity 0.3s ease;
     position: absolute;
     bottom: -52px;
-    background-color: #c5c2c292;
+    background-color: var(--secondary-color);
     color: var(--main-color);
     padding: 5px;
     width: 100%;
@@ -449,8 +460,7 @@ footer {
     text-align: center;
     align-items: center;
     font-size: 13px;
-    border-top: 2px solid #313c72;
-}
+    border-top: 2px solid var(--dark-main);}
 
 footer span {
     font-weight: bold;
@@ -488,3 +498,27 @@ footer span {
     background-color: var(--main-color);
     color: var(--secondary-color);
 }
+
+
+
+
+#get-started {background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)}
+#get-started {
+   margin-top: 100px;
+   padding: 12px 30px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.4s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   border: none;
+ }
+
+ #get-started:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+   transform: scale(1.1);
+ }
