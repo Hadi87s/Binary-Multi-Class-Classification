@@ -209,10 +209,44 @@ getStartedBtn.onclick = () => {
   });
 };
 
-home.onclick = () => {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth",
-  });
-};
+// home.addEventListener("click", () => {
+//   window.scrollTo({
+//     top: 0,
+//     left: 0,
+//     behavior: "smooth",
+//   });
+// });
+
+const toggleButton = document.querySelector("#themeToggle");
+
+toggleButton.addEventListener("click", () => {
+  const root = document.documentElement;
+  const currentBg = getComputedStyle(root)
+    .getPropertyValue("--main-color")
+    .trim();
+  if (currentBg === "#006699") {
+    //Dark Theme
+    root.style.setProperty("--main-color", "#0099e6");
+    root.style.setProperty("--secondary-color", "#e2e2e2");
+    root.style.setProperty("--light-bg", "#1E201E");
+    root.style.setProperty("--light-txt", "#f4f4f9");
+    root.style.setProperty("--lighter-bg", "#383a38");
+    root.style.setProperty("--canvas-light", "#383a38");
+    root.style.setProperty("--creator-section", "#383a38");
+    root.style.setProperty("--creator-text", "##f4f4f9");
+  } else {
+    //light Theme
+    root.style.setProperty("--main-color", "#006699");
+    root.style.setProperty("--secondary-color", "#e2e2e2");
+    root.style.setProperty("--light-bg", "#ffffff");
+    root.style.setProperty("--light-txt", "#1E201E");
+    root.style.setProperty("--lighter-bg", "#e2e2e2");
+    root.style.setProperty("--canvas-light", "#f4f4f9");
+    root.style.setProperty("--creator-section", "#f4f4f9");
+    root.style.setProperty("--creator-text", "#1E201E");
+  }
+
+  // console.log(`ThemeToggle test`);
+
+  // document.body.style.backgroundColor = "black";
+});
