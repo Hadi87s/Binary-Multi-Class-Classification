@@ -1,14 +1,29 @@
-:root {
+/* :root {
     --main-color: #006699;
     --secondary-color: #e2e2e2;
     --dark-main: #025681;
     --light-bg: #f4f4f9;
-    --light-txt: #1E201E;
+    --light-txt: #242424;
     --lighter-bg:#e2e2e2;
     --canvas-light: #f4f4f9;
     --creator-section:#f4f4f9;
-    --creator-text: #1E201E;
+    --creator-text: #242424;
+} */
+:root {
+    --main-color: #00796b; /* Teal: primary color for light theme */
+    --secondary-color: #e0f2f1; /* Aqua: lighter background */
+    --dark-main: #004d40; /* Dark teal for emphasis */
+    --light-bg: #ffffff; /* Clean white background */
+    --light-txt: #263238; /* Dark slate for readable text */
+    --lighter-bg: #b2dfdb; /* Very light aqua for contrast */
+    --canvas-light: #e0f2f1; /* Matches secondary for uniformity */
+    --creator-section: #ffffff; /* Clean white for creator section */
+    --creator-text: #263238; /* Matches text color for consistency */
+    --hero-txt:#ffffff;
+    --gradient: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% );
+    --gradient-btn: linear-gradient(to right, #134E5E 0%, #71B280  51%, #134E5E  100%);
 }
+
 
 ::-webkit-scrollbar {
     width: 12px;
@@ -55,7 +70,7 @@ html {
     margin-bottom: 40px;
     position: relative;
     text-transform: uppercase;
-    color: var(--light-txt);;
+    color: var(--light-txt);
 }
 
 .main-heading h2::before {
@@ -87,7 +102,7 @@ html {
 .main-heading p {
     line-height: 1.6;
     width: 550px;
-    color: var(--light-txt);;
+    color: var(--light-txt);
     max-width: 100%;
     margin: 0 auto;
 }
@@ -99,7 +114,7 @@ html {
 }
 .content {
     position: relative;
-    color: var(--light-bg);;
+    color: var(--light-bg);
     text-align: center;
     z-index: 1;
     /* Ensures content appears above video */
@@ -158,6 +173,7 @@ nav {
     background-color: var(--light-bg);
     width: 100%;
     z-index: 10;
+    box-shadow: 0 3px 21px -9px var(--main-color);
 }
 #learn-btn,
 #clear-btn,
@@ -255,13 +271,13 @@ label,
     background-color: transparent;
     cursor: pointer;
 }
-.starter ul li #code {
+.starter ul li #spinning {
     cursor: pointer;
     animation: infiniteRotate 1s ease-in-out infinite;
     color: var(--main-color);
     cursor: pointer;
 }
-.starter ul li #code:hover {
+.starter ul li #spinning:hover {
     color: var(--secondary-color);
 }
 
@@ -308,10 +324,7 @@ label,
     font-weight: bold;
 }
 
-@media (max-width:550px) {
-    /* #blist {
-        display: block;
-    } */
+@media (max-width:650px) {
     .starter ul{
        display: none;
     }
@@ -327,9 +340,12 @@ label,
     height: 100vh;
     overflow: hidden;
     border-bottom: 2px solid var(--secondary-color);
-    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(2,37,78,1) 0%, rgba(4,56,126,1) 19.7%, rgba(85,245,221,1) 100.2% );
+    background-image: var(--gradient);
+    transition: background-color 0.5s ease, color 0.5s ease, background-image 0.5s ease;
 }
-
+.image.fade {
+    opacity: 0.5;
+}
 
 
 
@@ -344,14 +360,14 @@ label,
 
 .image .text h2 {
     font-size: 75px;
-    color: var(--light-bg);
+    color: var(--hero-txt);
 }
 
 .image .text p {
     margin-top: 40px;
     font-size: 20px;
     line-height: 1.4;
-    color: var(--light-bg);
+    color: var(--hero-txt);
     ;
 }
 
@@ -390,7 +406,7 @@ label,
     }
     .image .text h2 {
         margin-top: 20px;
-        font-size: 50px;
+        font-size: 40px;
     }
     .about .classes {
         flex-direction: column;
@@ -398,11 +414,6 @@ label,
 
     .about .classes .binary {
         margin-bottom: 80px;
-    }
-
-    .classes .binary p,
-    .classes .multi p {
-        left: 0;
     }
 
     .container1 {
@@ -427,6 +438,10 @@ label,
 
     .form-container {
         width: 200px;
+    }
+    #classificationChart{
+        width: 900px;
+        margin: 10px auto;
     }
 }
 
@@ -476,10 +491,6 @@ label,
     left: 18px;
 }
 
-.classes .binary img:hover+p,
-.classes .multi img:hover+p {
-    opacity: 1;
-}
 
 .creators-section {
     text-align: center;
@@ -545,7 +556,9 @@ footer {
     text-align: center;
     align-items: center;
     font-size: 13px;
-    border-top: 2px solid var(--dark-main);}
+    border-top: 2px solid var(--dark-main);
+    box-shadow: 0 -5px 20px -9px var(--main-color);
+}
 
 footer span {
     font-weight: bold;
@@ -588,7 +601,7 @@ footer span {
 
 
 
-#get-started {background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)}
+#get-started {background-image: var(--gradient-btn)}
 #get-started {
    margin-top: 100px;
    padding: 12px 30px;
@@ -596,7 +609,7 @@ footer span {
    text-transform: uppercase;
    transition: 0.4s;
    background-size: 200% auto;
-   color: var(--light-bg);;            
+   color: var(--hero-txt);            
    box-shadow: 0 0 20px #eee;
    border-radius: 10px;
    border: none;
@@ -608,3 +621,58 @@ footer span {
    text-decoration: none;
    transform: scale(1.1);
  }
+
+ .classification-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    color: var(--light-txt);
+}
+
+.classification {
+    max-width: 600px;
+}
+
+.classification-table {
+    margin: 10px auto;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.classification-table th,
+.classification-table td {
+    border: 1px solid var(--lighter-bg);
+    padding: 8px;
+    text-align: center;
+    
+}
+
+.chart-container {
+    position: relative;
+    width: 100%; /* Full width */
+    max-width: 800px; /* Limit the maximum width */
+    height: auto; /* Let height adjust automatically */
+    aspect-ratio: 16 / 9; /* Maintain a good aspect ratio */
+    margin: 0 auto; /* Center the chart */
+    padding: 10px;
+    box-sizing: border-box;
+}
+.chart-container canvas{
+    position: absolute;
+    left: 0;
+    /* transform: translate(-50%); */
+}
+
+@media (max-width: 480px) {
+    .chart-container {
+        display: none;
+    }
+}
+
+canvas {
+    background-color: var(--lighter-bg);
+    border-radius: 8px;
+}

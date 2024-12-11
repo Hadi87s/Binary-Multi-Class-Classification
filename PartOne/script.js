@@ -6,6 +6,16 @@ const accuracyDisplay = document.getElementById("accuracy");
 const getStartedBtn = document.querySelector("#get-started");
 const solutionPart = document.querySelector("#Solution");
 const home = document.querySelector("#spinning");
+const toggleButton = document.querySelector("#themeToggle");
+const icon = toggleButton.querySelector("i");
+const root = document.documentElement;
+
+if (window.localStorage.getItem("Theme")) {
+  let check = window.localStorage.getItem("Theme");
+  if (check === "Dark") {
+    toDark(root, icon);
+  } else toLight(root, icon);
+}
 
 let class1Points = [];
 let class2Points = [];
@@ -209,44 +219,112 @@ getStartedBtn.onclick = () => {
   });
 };
 
-// home.addEventListener("click", () => {
-//   window.scrollTo({
-//     top: 0,
-//     left: 0,
-//     behavior: "smooth",
-//   });
-// });
+home.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});
 
-const toggleButton = document.querySelector("#themeToggle");
+function toDark(root, icon) {
+  root.style.setProperty("--main-color", "#26a69a");
+  root.style.setProperty("--secondary-color", "#004d40");
+  root.style.setProperty("--light-bg", "#263238");
+  root.style.setProperty("--light-txt", "#e0f2f1");
+  root.style.setProperty("--lighter-bg", "#37474f");
+  root.style.setProperty("--canvas-light", "#37474f");
+  root.style.setProperty("--creator-section", "#37474f");
+  root.style.setProperty("--creator-text", "#e0f2f1");
+  root.style.setProperty("--hero-txt", "#ffffff");
+  root.style.setProperty(
+    "--gradient-btn",
+    "linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)"
+  );
+  root.style.setProperty(
+    "--gradient",
+    "radial-gradient(circle farthest-corner at 10% 20%, rgba(13,13,54,1) 0%, rgba(44,62,80,1) 50%, rgba(0,212,255,1) 100%)"
+  );
+  icon.classList.remove("fa-moon");
+  icon.classList.add("fa-sun");
+}
+
+function toLight(root, icon) {
+  // Light Theme
+  root.style.setProperty("--main-color", "#00796b");
+  root.style.setProperty("--secondary-color", "#e0f2f1");
+  root.style.setProperty("--light-bg", "#ffffff");
+  root.style.setProperty("--light-txt", "#263238");
+  root.style.setProperty("--lighter-bg", "#b2dfdb");
+  root.style.setProperty("--canvas-light", "#e0f2f1");
+  root.style.setProperty("--creator-section", "#ffffff");
+  root.style.setProperty("--creator-text", "#263238");
+  root.style.setProperty("--hero-txt", "#ffffff");
+  root.style.setProperty(
+    "--gradient-btn",
+    "linear-gradient(to right, #134E5E 0%, #71B280  51%, #134E5E  100%)"
+  );
+  root.style.setProperty(
+    "--gradient",
+    "radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% )"
+  );
+  icon.classList.remove("fa-sun");
+  icon.classList.add("fa-moon");
+}
 
 toggleButton.addEventListener("click", () => {
-  const root = document.documentElement;
   const currentBg = getComputedStyle(root)
     .getPropertyValue("--main-color")
     .trim();
-  if (currentBg === "#006699") {
-    //Dark Theme
-    root.style.setProperty("--main-color", "#0099e6");
-    root.style.setProperty("--secondary-color", "#e2e2e2");
-    root.style.setProperty("--light-bg", "#1E201E");
-    root.style.setProperty("--light-txt", "#f4f4f9");
-    root.style.setProperty("--lighter-bg", "#383a38");
-    root.style.setProperty("--canvas-light", "#383a38");
-    root.style.setProperty("--creator-section", "#383a38");
-    root.style.setProperty("--creator-text", "##f4f4f9");
+
+  let themeFromStorage = window.localStorage.getItem("Theme");
+
+  if (themeFromStorage === "Light") {
+    window.localStorage.setItem("Theme", "Dark");
+  } else window.localStorage.setItem("Theme", "Light"); // Note: Toggling the value in the local storage
+
+  if (currentBg === "#00796b") {
+    // Dark Theme
+    toDark(root, icon);
   } else {
-    //light Theme
-    root.style.setProperty("--main-color", "#006699");
-    root.style.setProperty("--secondary-color", "#e2e2e2");
-    root.style.setProperty("--light-bg", "#ffffff");
-    root.style.setProperty("--light-txt", "#1E201E");
-    root.style.setProperty("--lighter-bg", "#e2e2e2");
-    root.style.setProperty("--canvas-light", "#f4f4f9");
-    root.style.setProperty("--creator-section", "#f4f4f9");
-    root.style.setProperty("--creator-text", "#1E201E");
+    // Light Theme
+    toLight(root, icon);
   }
+});
 
-  // console.log(`ThemeToggle test`);
+const ctx2 = document.getElementById("classificationChart").getContext("2d");
 
-  // document.body.style.backgroundColor = "black";
+const classificationChart = new Chart(ctx2, {
+  type: "doughnut",
+  data: {
+    labels: ["Binary Classification", "Multi-Class Classification"],
+    datasets: [
+      {
+        label: "Number of Classes",
+        data: [2, 5],
+        backgroundColor: ["#4caf50", "#2196f3"],
+        borderColor: ["#388e3c", "#1976d2"],
+        borderWidth: 1,
+      },
+    ],
+  },
+  options: {
+    responsive: true, // Ensures the chart is responsive
+    maintainAspectRatio: false, // Allows chart height to scale with width
+    plugins: {
+      legend: {
+        display: true,
+        position: "top",
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: "Number of Classes",
+        },
+      },
+    },
+  },
 });

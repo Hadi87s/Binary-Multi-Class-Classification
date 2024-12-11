@@ -34,7 +34,7 @@
             
             <ul>
                 <li>
-                    <i id="code" class="fa-solid fa-code" style="font-size: 18px" id="spinning"></i>
+                    <i class="fa-solid fa-code" style="font-size: 18px" id="spinning"></i>
                 </li>
                 <li>
                     <a href="#About">About</a>
@@ -56,7 +56,7 @@
     </div>
     <div class="image">
         <div class="text">
-            <h2>AI Project</h2>
+            <h2>Binary/Multi-Class Classification</h2>
             <p>This project explores two key approaches in machine learning classification, binary and multi-class
                 classification. Through interactive visualizations, users can plot points on a canvas to dynamically
                 classify data points based on their chosen category.
@@ -71,16 +71,55 @@
             data points, and seeing how the model learns to distinguish between different categories.</p>
     </div>
     <div class="about">
-        <div class="classes">
-            <div class="binary">
-                <img src="../Images/Binary-Classification.png" alt="">
-                <p>where two categories or "classes" are separated.</p>
+        <div class="classification-container">
+            <div class="classification">
+                <h3>Binary Classification</h3>
+                <p>
+                    Binary classification predicts one of two possible classes. For example:
+                </p>
+                <table class="classification-table">
+                    <tr>
+                        <th>Example Input</th>
+                        <th>Prediction</th>
+                    </tr>
+                    <tr>
+                        <td>Email Content</td>
+                        <td>Spam / Not Spam</td>
+                    </tr>
+                    <tr>
+                        <td>Image</td>
+                        <td>Cat / Dog</td>
+                    </tr>
+                </table>
             </div>
-            <div class="multi">
-                <img src="../Images/Multi-Class.png" alt="">
-                <p>where more than two classes are classified by the model.</p>
+        
+            <div class="classification">
+                <h3>Multi-Class Classification</h3>
+                <p>
+                    Multi-class classification assigns data points to one of multiple categories. For example:
+                </p>
+                <table class="classification-table">
+                    <tr>
+                        <th>Example Input</th>
+                        <th>Prediction</th>
+                    </tr>
+                    <tr>
+                        <td>Handwritten Digit</td>
+                        <td>0 / 1 / 2 / ... / 9</td>
+                    </tr>
+                    <tr>
+                        <td>Animal Image</td>
+                        <td>Cat / Dog / Bird</td>
+                    </tr>
+                </table>
+            </div>
+        
+            <div class="chart-container">
+                <h3>Visual Comparison</h3>
+                <canvas id="classificationChart" width="400" height="300"></canvas>
             </div>
         </div>
+        
     </div>
     <div class="main-heading" id="Solution">
         <h2>Binary Classification</h2>
@@ -156,7 +195,9 @@
 
     <button id="scrollToTop" onclick="scrollToTop()">↓</button>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>
