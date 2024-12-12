@@ -381,9 +381,6 @@ label,
         border-bottom: none;
     }
     
-    .starter ul li:first-child {
-        display: none;
-    }
     
 }
 
