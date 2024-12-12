@@ -1,14 +1,4 @@
-/* :root {
-    --main-color: #006699;
-    --secondary-color: #e2e2e2;
-    --dark-main: #025681;
-    --light-bg: #f4f4f9;
-    --light-txt: #242424;
-    --lighter-bg:#e2e2e2;
-    --canvas-light: #f4f4f9;
-    --creator-section:#f4f4f9;
-    --creator-text: #242424;
-} */
+
 :root {
     --main-color: #00796b; /* Teal: primary color for light theme */
     --secondary-color: #e0f2f1; /* Aqua: lighter background */
@@ -23,7 +13,6 @@
     --gradient: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% );
     --gradient-btn: linear-gradient(to right, #134E5E 0%, #71B280  51%, #134E5E  100%);
 }
-
 
 ::-webkit-scrollbar {
     width: 12px;
@@ -95,7 +84,7 @@ html {
     left: 50%;
     transform: translateX(-50%);
     bottom: -25px;
-    background-color: var(--light-bg);
+    background-color: var(--secondary-color);
 
 }
 
@@ -177,6 +166,7 @@ nav {
     width: 100%;
     z-index: 10;
     box-shadow: 0 3px 21px -9px var(--main-color);
+    border-bottom: 2px solid var(--secondary-color);
 }
 #learn-btn,
 #clear-btn,
@@ -253,15 +243,22 @@ label,
     background-color: var(--light-bg);;
 }
 
+.cls-1 {
+    fill: var(--main-color);
+}
+
 .starter .logo{
-    opacity: 0;
+    opacity: 1;
     position: absolute;
-    left: 50%;
+    left: 10%;
     transform: translateX(-50%);
-    color: var(--main-color);
     font-weight: bold;
     text-transform: uppercase;
+    width: 40px;
+    height: 40px;
+    transition: 300ms;
 }
+
 
 .starter ul {
     position: relative;
@@ -270,7 +267,6 @@ label,
     justify-content: center;
     margin: 0;
     padding: 15px;
-    border-bottom: 2px solid var(--secondary-color);
 }
 
 .starter ul li {
@@ -302,9 +298,7 @@ label,
     color: var(--main-color);
     transition: 200ms;
 } 
-.starter nav  i.fa-bars:hover {
-    /* color: var(--secondary-color); */
-}
+
 .starter ul li i{
     transition: 0.2s;
 }
@@ -348,6 +342,8 @@ label,
 @media (max-width:650px) {
     .starter .logo {
         opacity: 1;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .starter nav {
         justify-content: flex-end;

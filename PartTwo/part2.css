@@ -1,9 +1,17 @@
 :root {
-    --main-color: #006699;
-    --secondary-color: #e2e2e2;
-    --dark-main: #025681;
+    --main-color: #00796b; /* Teal: primary color for light theme */
+    --secondary-color: #e0f2f1; /* Aqua: lighter background */
+    --dark-main: #004d40; /* Dark teal for emphasis */
+    --light-bg: #ffffff; /* Clean white background */
+    --light-txt: #263238; /* Dark slate for readable text */
+    --lighter-bg: #b2dfdb; /* Very light aqua for contrast */
+    --canvas-light: #e0f2f1; /* Matches secondary for uniformity */
+    --creator-section: #ffffff; /* Clean white for creator section */
+    --creator-text: #263238; /* Matches text color for consistency */
+    --hero-txt: #ffffff;
+    --gradient: radial-gradient(circle farthest-corner at 10% 20%, rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90%);
+    --gradient-btn: linear-gradient(to right, #134E5E 0%, #71B280 51%, #134E5E 100%);
 }
-
 
 html {
     scroll-behavior: smooth;
@@ -11,12 +19,10 @@ html {
 
 ::-webkit-scrollbar {
     width: 15px;
-    /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
     background-color: var(--secondary-color);
-    /* Track color */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -28,7 +34,6 @@ html {
     color: white;
 }
 
-/* This will represent a dynamic heading mechanism */
 .main-heading {
     text-align: center;
     margin-top: 70px;
@@ -41,7 +46,7 @@ html {
     margin-bottom: 40px;
     position: relative;
     text-transform: uppercase;
-    color: black;
+    color: var(--light-txt);
 }
 
 .main-heading h2::before {
@@ -53,7 +58,6 @@ html {
     transform: translateX(-50%);
     background-color: var(--main-color);
     bottom: -20px;
-
 }
 
 .main-heading h2::after {
@@ -66,32 +70,31 @@ html {
     left: 50%;
     transform: translateX(-50%);
     bottom: -25px;
-    background-color: white;
-
+    background-color: var(--secondary-color);
 }
 
 .main-heading p {
     line-height: 1.6;
     width: 550px;
-    color: black;
+    color: var(--light-txt);
     max-width: 100%;
     margin: 0 auto;
 }
 
-/* the rest of the design */
 body {
     font-family: "Work Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     margin: 0;
+    background-color: var(--light-bg);
+    color: var(--light-txt);
 }
 
 .content {
     position: relative;
-    color: white;
+    color: var(--light-txt);
     text-align: center;
     z-index: 1;
-    /* Ensures content appears above video */
     padding: 20px;
     margin: 0 200px;
 }
@@ -104,7 +107,7 @@ body {
     margin-top: -15px;
 }
 
-@media (max-width:900px) {
+@media (max-width: 900px) {
     .container {
         flex-wrap: wrap;
     }
@@ -134,7 +137,6 @@ body {
 
     .form-container {
         width: 200px;
-
     }
 
     .input-section {
@@ -149,9 +151,9 @@ body {
 }
 
 canvas {
-    border: 1px solid black;
+    border: 1px solid var(--light-txt);
     margin-top: 20px;
-    background-color: white;
+    background-color: var(--secondary-color);
     border-radius: 5px;
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2),
         0 8px 30px rgba(0, 0, 0, 0.15);
@@ -179,7 +181,7 @@ select {
     background-color: var(--main-color);
     border: none;
     border-radius: 6px;
-    color: var(--secondary-color);
+    color: var(--light-bg);
     transition: 0.2s;
 }
 
@@ -198,6 +200,7 @@ select {
     padding: 10px;
     border-radius: 6px;
     transition: 0.5s;
+    border: 1px solid var(--main-color);
 }
 
 .title {
@@ -217,12 +220,12 @@ select {
 label,
 #accuracy,
 #output-result {
-    color: black;
+    color: var(--light-txt);
     font-weight: bold;
 }
 
 #shape-category {
-    border: 2px solid black;
+    border: 2px solid var(--light-txt);
 }
 
 .input-section {
@@ -237,13 +240,14 @@ label,
     padding: 10px;
     border-radius: 6px;
     transition: 0.5s;
+    border: 1px solid var(--main-color);
 }
 
 footer {
     background-color: var(--main-color);
     margin: 0;
     padding: 20px;
-    color: white;
+    color: var(--hero-txt);
     text-align: center;
     align-items: center;
     font-size: 13px;
@@ -259,11 +263,9 @@ footer span {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 24px;
-    color: #333;
+    color: var(--light-txt);
     z-index: 1000;
-    /* Ensure it’s above other elements */
     background: rgba(255, 255, 255, 0.8);
-    /* Optional: Add a background to fade other content */
     padding: 20px;
     border-radius: 50%;
     border: solid 4px;
@@ -275,7 +277,6 @@ footer span {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }
