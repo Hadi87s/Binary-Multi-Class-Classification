@@ -282,10 +282,11 @@ label,
 }
 
 .starter ul #blist {
-    position: absolute;
-    right: 10px;
     cursor: pointer;
+    font-size: 15px;
+    font-size: 20px;
     display: none;
+    margin-right: 5px;
 } 
 .starter ul li i{
     transition: 0.2s;
@@ -325,8 +326,16 @@ label,
 }
 
 @media (max-width:650px) {
-    .starter ul{
-       display: none;
+    .starter ul li:not(#blist){
+       opacity: 0;
+    
+    }
+    .starter ul {
+        justify-content: flex-end;
+
+    }
+    .starter ul #blist {
+        display: block;
     }
 }
 
@@ -676,3 +685,7 @@ canvas {
     background-color: var(--lighter-bg);
     border-radius: 8px;
 }
+
+
+
+

@@ -197,7 +197,7 @@ const multiClassButton = document.getElementById("multi-class-btn");
 
 // Add event listener to open the multi-class classification page
 multiClassButton.addEventListener("click", function () {
-  window.location.href = "../PartTwo/part2.html#Part2"; // Redirect to another page for multi-class
+  window.location.href = "../PartTwo/part2.html"; // Redirect to another page for multi-class
 });
 
 window.onscroll = function () {
@@ -227,7 +227,7 @@ home.addEventListener("click", () => {
   });
 });
 
-function toDark(root, icon) {
+function toDark() {
   root.style.setProperty("--main-color", "#26a69a");
   root.style.setProperty("--secondary-color", "#004d40");
   root.style.setProperty("--light-bg", "#263238");
@@ -239,17 +239,17 @@ function toDark(root, icon) {
   root.style.setProperty("--hero-txt", "#ffffff");
   root.style.setProperty(
     "--gradient-btn",
-    "linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)"
+    "linear-gradient(to right, #215f00 0%,rgb(107, 178, 103)  51%, #215f00  100%)"
   );
   root.style.setProperty(
     "--gradient",
-    "radial-gradient(circle farthest-corner at 10% 20%, rgba(13,13,54,1) 0%, rgba(44,62,80,1) 50%, rgba(0,212,255,1) 100%)"
+    "radial-gradient(circle farthest-corner at 10% 20%, rgb(17, 69, 52) 0%, rgb(44, 80, 70) 50%, rgb(0, 255, 183)100%)"
   );
   icon.classList.remove("fa-moon");
   icon.classList.add("fa-sun");
 }
 
-function toLight(root, icon) {
+function toLight() {
   // Light Theme
   root.style.setProperty("--main-color", "#00796b");
   root.style.setProperty("--secondary-color", "#e0f2f1");
@@ -277,18 +277,16 @@ toggleButton.addEventListener("click", () => {
     .getPropertyValue("--main-color")
     .trim();
 
-  let themeFromStorage = window.localStorage.getItem("Theme");
-
-  if (themeFromStorage === "Light") {
+  if (window.localStorage.getItem("Theme") === "Light") {
     window.localStorage.setItem("Theme", "Dark");
   } else window.localStorage.setItem("Theme", "Light"); // Note: Toggling the value in the local storage
 
   if (currentBg === "#00796b") {
     // Dark Theme
-    toDark(root, icon);
+    toDark();
   } else {
     // Light Theme
-    toLight(root, icon);
+    toLight();
   }
 });
 
