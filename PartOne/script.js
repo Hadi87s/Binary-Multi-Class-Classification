@@ -243,7 +243,7 @@ function toDark() {
   );
   root.style.setProperty(
     "--gradient",
-    "radial-gradient(circle farthest-corner at 10% 20%, rgb(17, 69, 52) 0%, rgb(44, 80, 70) 50%, rgb(0, 255, 183)100%)"
+    "radial-gradient(circle farthest-corner at 10% 20%, rgb(17, 69, 52) 0%, rgb(44, 80, 70) 50%, rgb(107, 178, 103)100%)"
   );
   icon.classList.remove("fa-moon");
   icon.classList.add("fa-sun");
