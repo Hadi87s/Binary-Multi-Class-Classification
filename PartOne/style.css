@@ -167,6 +167,9 @@ button {
 }
 
 nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -250,7 +253,15 @@ label,
     background-color: var(--light-bg);;
 }
 
-
+.starter .logo{
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--main-color);
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
 .starter ul {
     position: relative;
@@ -281,13 +292,19 @@ label,
     color: var(--secondary-color);
 }
 
-.starter ul #blist {
+.starter nav  i.fa-bars{
     cursor: pointer;
     font-size: 15px;
     font-size: 20px;
-    display: none;
     margin-right: 5px;
+    display: none;
+    justify-self: flex-start;
+    color: var(--main-color);
+    transition: 200ms;
 } 
+.starter nav  i.fa-bars:hover {
+    /* color: var(--secondary-color); */
+}
 .starter ul li i{
     transition: 0.2s;
 }
@@ -324,19 +341,54 @@ label,
     transition: 0.2s;
     font-weight: bold;
 }
+.starter ul.visible {
+    opacity: 1;
+}
 
 @media (max-width:650px) {
-    .starter ul li:not(#blist){
-       opacity: 0;
-    
+    .starter .logo {
+        opacity: 1;
     }
-    .starter ul {
+    .starter nav {
         justify-content: flex-end;
 
     }
-    .starter ul #blist {
+    .starter nav i.fa-bars {
         display: block;
+        margin-right: 10px;
+        padding: 15px;
     }
+    .starter ul {
+        display: flex;
+        position: absolute;
+        top: 51px;
+        right: -50px;
+        border: none;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 16em;
+        background-color: rgba(0, 0, 0, 0.495);
+        align-content: flex-start;
+        border-radius: 6px;
+        opacity: 0;
+        transition: 200ms;
+    }
+    .starter ul li {
+        border-bottom: 1px solid white;
+        margin-right: 50px;
+        width: 80%;
+        text-align: end;
+        padding: 10px;
+    }
+    .starter ul li:last-child{
+        border-bottom: none;
+    }
+    
+    .starter ul li:first-child {
+        display: none;
+    }
+    
 }
 
 .starter ul a:hover {
@@ -368,7 +420,7 @@ label,
 }
 
 .image .text h2 {
-    font-size: 75px;
+    font-size: 55px;
     color: var(--hero-txt);
 }
 
@@ -414,7 +466,7 @@ label,
         margin:0 78px;
     }
     .image .text h2 {
-        margin-top: 20px;
+        margin-top: 30px;
         font-size: 40px;
     }
     .about .classes {
@@ -454,7 +506,7 @@ label,
     }
 }
 
-@media (max-width: 597px){
+@media (max-width: 627px){
     .image .text p {
         font-size: 17px;
     }

@@ -9,6 +9,8 @@ const home = document.querySelector("#spinning");
 const toggleButton = document.querySelector("#themeToggle");
 const icon = toggleButton.querySelector("i");
 const root = document.documentElement;
+const navMenu = document.querySelector(".starter ul");
+const bars = document.querySelector(".starter nav i.fa-bars");
 
 if (window.localStorage.getItem("Theme")) {
   let check = window.localStorage.getItem("Theme");
@@ -326,3 +328,7 @@ const classificationChart = new Chart(ctx2, {
     },
   },
 });
+
+bars.onclick = () => {
+  navMenu.classList.toggle("visible");
+};
