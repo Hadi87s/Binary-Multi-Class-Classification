@@ -12,6 +12,12 @@ const root = document.documentElement;
 const navMenu = document.querySelector(".starter ul");
 const bars = document.querySelector(".starter nav i.fa-bars");
 
+window.onclick = () => {
+  if (navMenu.classList.contains("visible")) {
+    navMenu.classList.remove("visible");
+  }
+};
+
 if (window.localStorage.getItem("Theme")) {
   let check = window.localStorage.getItem("Theme");
   if (check === "Dark") {
@@ -329,6 +335,8 @@ const classificationChart = new Chart(ctx2, {
   },
 });
 
-bars.onclick = () => {
+bars.onclick = (e) => {
+  e.stopPropagation(); // this is used to prevent the bubble event, when you click at the bars it will prevent the click from propegating back to the window object.
+  // and we've created another onclick on the window to hide the menu when the window is clicked.
   navMenu.classList.toggle("visible");
 };
