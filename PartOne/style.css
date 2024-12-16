@@ -257,6 +257,7 @@ label,
     width: 40px;
     height: 40px;
     transition: 300ms;
+    cursor: pointer;
 }
 
 
