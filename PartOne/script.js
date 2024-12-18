@@ -340,3 +340,14 @@ bars.onclick = (e) => {
   // and we've created another onclick on the window to hide the menu when the window is clicked.
   navMenu.classList.toggle("visible");
 };
+
+window.onscroll = () => {
+  let navy = document.querySelector("nav");
+  if (window.scrollY > 716) {
+    navy.classList.add("filter");
+    navy.classList.remove("bck");
+  } else {
+    navy.classList.remove("filter");
+    navy.classList.add("bck");
+  }
+};
